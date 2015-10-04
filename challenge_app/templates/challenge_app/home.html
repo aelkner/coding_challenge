@@ -1,1 +1,48 @@
-Hello, World!
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            .errorlist {
+                list-style-type: none;
+                color: red;
+                padding-left: 0em;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function() {
+                elem = document.getElementById("id_input_number");
+                elem.focus();
+                elem.select();
+            }
+        </script>
+    </head>
+
+    <body>
+        <h2>Interger to Roman Numeral Converter</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                {{ form.input_number.label }}
+            </p>
+            <p>
+                {{ form.input_number.errors }}
+            </p>
+            <p>
+                {{ form.input_number }}
+            </p>
+
+            <input type="submit" name="save" value="Convert to Roman Numerals">
+        </form>
+
+        {% if roman %}
+            <p>
+                Roman numerals:
+            </p>
+            <p id="id_roman_numerals">
+                {{ roman }}
+            </p>
+        {% endif %}
+    </body>
+</html>
